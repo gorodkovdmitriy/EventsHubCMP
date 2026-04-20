@@ -1,0 +1,7 @@
+<resources>
+    <string name="user_registration_first_name">Имя</string>
+    <string name="user_registration_last_name">Фамилия</string>
+    <string name="user_registration_email">Электронная почта</string>
+    <string name="user_registration_password">Пароль</string>
+    <string name="user_registration_register_button">Зарегистрироваться</string>
+</resources>
