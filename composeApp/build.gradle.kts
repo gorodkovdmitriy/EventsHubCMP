@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.ApplicationExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -5,6 +6,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.koin.compiler)
+    kotlin("plugin.serialization") version "2.3.10"
 }
 
 kotlin {
@@ -28,6 +31,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.okhttp)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -36,16 +40,37 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.components.resources)
             implementation(libs.compose.uiToolingPreview)
+
+            // Lifecycle
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            // Ktor
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.plugin.negotiation)
+            implementation(libs.ktor.plugin.logging)
+            implementation(libs.ktor.serialization.kotlinx)
+
+            // Koin
+            implementation(project.dependencies.platform(libs.di.koin.bom))
+            implementation(libs.di.koin.core)
+            implementation(libs.di.koin.compose)
+            implementation(libs.di.koin.composeViewModel)
+            implementation(libs.di.koin.annotations)
+
+            // Logger
+            implementation(libs.logger.napier)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin)
+        }
     }
 }
 
-android {
+configure<ApplicationExtension> {
     namespace = "com.gorodkovdmitriy.eventshub"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
