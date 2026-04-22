@@ -21,7 +21,7 @@ composeMultiplatform = "1.10.3"
 androidx-lifecycle = "2.10.0"
 
 # Сетевой слой
-ktor = "3.4.2"
+ktor = "3.4.3"
 
 # Иньекция зависимостей
 koin-plugin = "0.6.2"
@@ -29,6 +29,12 @@ koin = "4.2.1"
 
 # Логирование
 napier = "2.7.1"
+
+# Защищенное хранилище
+ksafe = "1.8.1"
+
+# Навигация
+navigatioin3 = "1.0.0-alpha05"
 
 
 [libraries]
@@ -58,6 +64,7 @@ ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-plugin-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-plugin-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-plugin-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktor-serialization-kotlinx= { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # Koin
@@ -69,6 +76,12 @@ di-koin-annotations = { module = "io.insert-koin:koin-annotations" }
 
 # Logger
 logger-napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+
+# Защищенное хранилище
+ksafe = { module = "eu.anifantakis:ksafe", version.ref = "ksafe" }
+
+# Навигация
+navigation3 = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "navigatioin3" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

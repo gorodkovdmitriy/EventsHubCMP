@@ -1,0 +1,9 @@
+package com.gorodkovdmitriy.eventshub.common.di
+
+import eu.anifantakis.lib.ksafe.KSafe
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
+
+actual val platformModule = module {
+    single<KSafe> { KSafe(androidContext()) }
+}

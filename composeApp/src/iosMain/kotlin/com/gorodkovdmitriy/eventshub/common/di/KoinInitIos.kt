@@ -1,4 +1,4 @@
-package com.gorodkovdmitriy.eventshub.di
+package com.gorodkovdmitriy.eventshub.common.di
 
 import com.gorodkovdmitriy.eventshub.common.di.initKoin
 

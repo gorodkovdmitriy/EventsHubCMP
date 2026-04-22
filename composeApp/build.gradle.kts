@@ -49,6 +49,7 @@ kotlin {
             implementation(libs.ktor.core)
             implementation(libs.ktor.plugin.negotiation)
             implementation(libs.ktor.plugin.logging)
+            implementation(libs.ktor.plugin.auth)
             implementation(libs.ktor.serialization.kotlinx)
 
             // Koin
@@ -60,6 +61,12 @@ kotlin {
 
             // Logger
             implementation(libs.logger.napier)
+
+            // Защищенное хранилище
+            implementation(libs.ksafe)
+
+            // Навигация
+            implementation(libs.navigation3)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
