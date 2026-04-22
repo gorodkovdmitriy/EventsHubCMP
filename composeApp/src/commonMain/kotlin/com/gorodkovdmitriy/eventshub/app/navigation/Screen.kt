@@ -1,26 +1,23 @@
 package com.gorodkovdmitriy.eventshub.app.navigation
 
 import androidx.navigation3.runtime.NavKey
-import androidx.savedstate.serialization.SavedStateConfiguration
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
 
-//@Serializable
-//sealed interface Screen : NavKey {
-//
-//    @Serializable
-//    data object EventList : Screen
-//
-//    @Serializable
-//    data object Register : Screen
-//
-//    @Serializable
-//    data object Auth : Screen
-//
-//    @Serializable
-//    data object UserInfo : Screen
-//}
+@Serializable
+sealed interface Screen : NavKey {
+
+    @Serializable
+    data object EventList : Screen
+
+    @Serializable
+    data object Register : Screen
+
+    @Serializable
+    data object Auth : Screen
+
+    @Serializable
+    data object UserInfo : Screen
+}
 //
 //val config = SavedStateConfiguration {
 //    serializersModule = SerializersModule {

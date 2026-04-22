@@ -2,6 +2,7 @@ package com.gorodkovdmitriy.eventshub.feature.auth.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gorodkovdmitriy.eventshub.app.navigation.Router
 import com.gorodkovdmitriy.eventshub.common.extension.log
 import com.gorodkovdmitriy.eventshub.common.network.response.AuthResponseEntity
 import com.gorodkovdmitriy.eventshub.feature.auth.domain.AuthRepository
@@ -12,11 +13,17 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class UserRegistrationViewModel(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val router: Router,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UserRegistrationUiState())
     val uiState = _state.asStateFlow()
+
+    override fun onCleared() {
+        super.onCleared()
+        log(message = "UserRegistrationViewModel onCleared")
+    }
 
     fun onEvent(event: UserRegistrationEvent) {
         when (event) {
@@ -33,7 +40,8 @@ class UserRegistrationViewModel(
                 _state.value = _state.value.copy(password = event.password)
             }
             is UserRegistrationEvent.OnRegisterButtonClicked -> {
-                registerUser()
+                // registerUser()
+                router.openAuthScreen()
             }
         }
     }
