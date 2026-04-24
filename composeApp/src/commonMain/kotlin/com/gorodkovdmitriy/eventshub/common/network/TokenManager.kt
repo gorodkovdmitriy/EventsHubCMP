@@ -14,11 +14,11 @@ class TokenManager(private val ksafe: KSafe) {
         ksafe.put(REFRESH_TOKEN_KEY, authResponseEntity.refreshToken)
     }
 
-    fun getAccessToken(): String {
-        return ksafe.getDirect(key = ACCESS_TOKEN_KEY, defaultValue = "")
+    suspend fun getAccessToken(): String? {
+        return ksafe.get(key = ACCESS_TOKEN_KEY, defaultValue = null)
     }
 
-    fun getRefreshToken(): String {
-        return ksafe.getDirect(key = ACCESS_TOKEN_KEY, defaultValue = "")
+    suspend fun getRefreshToken(): String? {
+        return ksafe.get(key = REFRESH_TOKEN_KEY, defaultValue = null)
     }
 }

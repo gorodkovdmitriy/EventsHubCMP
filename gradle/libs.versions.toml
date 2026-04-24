@@ -34,7 +34,8 @@ napier = "2.7.1"
 ksafe = "1.8.1"
 
 # Навигация
-navigatioin3 = "1.0.0-alpha05"
+multiplatform-nav3-ui = "1.0.0-alpha06"
+compose-multiplatform-lifecycle = "2.10.0"
 
 
 [libraries]
@@ -81,7 +82,8 @@ logger-napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 ksafe = { module = "eu.anifantakis:ksafe", version.ref = "ksafe" }
 
 # Навигация
-navigation3 = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "navigatioin3" }
+navigation3 = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "multiplatform-nav3-ui" }
+navigation3-lifecycle = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "compose-multiplatform-lifecycle" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

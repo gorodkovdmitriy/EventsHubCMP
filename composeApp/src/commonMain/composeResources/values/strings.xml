@@ -1,7 +1,8 @@
 <resources>
-    <string name="user_registration_first_name">First Name</string>
-    <string name="user_registration_last_name">Last Name</string>
-    <string name="user_registration_email">Email</string>
-    <string name="user_registration_password">Password</string>
-    <string name="user_registration_register_button">Register</string>
+    <string name="auth_registration_first_name">First Name</string>
+    <string name="authregistration_last_name">Last Name</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_register_button">Register</string>
+    <string name="auth_login_button">Login</string>
 </resources>

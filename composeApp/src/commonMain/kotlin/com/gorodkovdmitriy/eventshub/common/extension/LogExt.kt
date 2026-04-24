@@ -2,6 +2,6 @@ package com.gorodkovdmitriy.eventshub.common.extension
 
 import io.github.aakira.napier.Napier
 
-fun log(tag: String = "myLog", message: String) {
+fun log(message: String, tag: String = "myLog") {
     Napier.d(tag = tag, message = message)
 }

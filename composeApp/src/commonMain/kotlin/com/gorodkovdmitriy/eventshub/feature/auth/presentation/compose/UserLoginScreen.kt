@@ -29,15 +29,13 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gorodkovdmitriy.eventshub.feature.auth.presentation.model.UserRegistrationEvent
-import com.gorodkovdmitriy.eventshub.feature.auth.presentation.model.UserRegistrationUiState
-import com.gorodkovdmitriy.eventshub.feature.auth.presentation.viewModel.UserRegistrationViewModel
+import com.gorodkovdmitriy.eventshub.feature.auth.presentation.model.UserLoginEvent
+import com.gorodkovdmitriy.eventshub.feature.auth.presentation.model.UserLoginUiState
+import com.gorodkovdmitriy.eventshub.feature.auth.presentation.viewModel.UserLoginViewModel
 import eventshub.composeapp.generated.resources.Res
 import eventshub.composeapp.generated.resources.auth_email
+import eventshub.composeapp.generated.resources.auth_login_button
 import eventshub.composeapp.generated.resources.auth_password
-import eventshub.composeapp.generated.resources.auth_register_button
-import eventshub.composeapp.generated.resources.auth_registration_first_name
-import eventshub.composeapp.generated.resources.authregistration_last_name
 import eventshub.composeapp.generated.resources.ic_close_eye
 import eventshub.composeapp.generated.resources.ic_open_eye
 import org.jetbrains.compose.resources.painterResource
@@ -45,21 +43,20 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun UserRegistrationScreen(
-    viewModel: UserRegistrationViewModel = koinViewModel<UserRegistrationViewModel>()
+fun UserLoginScreen(
+    viewModel: UserLoginViewModel = koinViewModel<UserLoginViewModel>()
 ) {
-    val uiState: UserRegistrationUiState by viewModel.uiState.collectAsState()
-
-    UserRegistrationScreen(
+    val uiState: UserLoginUiState by viewModel.uiState.collectAsState()
+    UserLoginScreen(
         uiState = uiState,
         onEvent = viewModel::onEvent
     )
 }
 
 @Composable
-private fun UserRegistrationScreen(
-    uiState: UserRegistrationUiState,
-    onEvent: (UserRegistrationEvent) -> Unit
+private fun UserLoginScreen(
+    uiState: UserLoginUiState,
+    onEvent: (UserLoginEvent) -> Unit
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
 
@@ -71,35 +68,15 @@ private fun UserRegistrationScreen(
             .padding(top = 50.dp)
     ) {
         Text(
-            text = "Регистрация",
+            text = "Авторизация",
             fontSize = 30.sp
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
-            value = uiState.firstName,
-            onValueChange = { onEvent(UserRegistrationEvent.OnFirstNameChanged(it)) },
-            label = { Text(stringResource(Res.string.auth_registration_first_name)) },
-            modifier = Modifier.fillMaxWidth(),
-            singleLine = true
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedTextField(
-            value = uiState.lastName,
-            onValueChange = { onEvent(UserRegistrationEvent.OnLastNameChanged(it)) },
-            label = { Text(stringResource(Res.string.authregistration_last_name)) },
-            modifier = Modifier.fillMaxWidth(),
-            singleLine = true
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedTextField(
             value = uiState.email,
-            onValueChange = { onEvent(UserRegistrationEvent.OnEmailChanged(it)) },
+            onValueChange = { onEvent(UserLoginEvent.OnEmailChanged(it)) },
             label = { Text(stringResource(Res.string.auth_email)) },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
@@ -110,7 +87,7 @@ private fun UserRegistrationScreen(
 
         OutlinedTextField(
             value = uiState.password,
-            onValueChange = { onEvent(UserRegistrationEvent.OnPasswordChanged(it)) },
+            onValueChange = { onEvent(UserLoginEvent.OnPasswordChanged(it)) },
             label = { Text(stringResource(Res.string.auth_password)) },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
@@ -133,22 +110,22 @@ private fun UserRegistrationScreen(
         Spacer(Modifier.weight(1f))
 
         Button(
-            onClick = { onEvent(UserRegistrationEvent.OnRegisterButtonClicked) },
+            onClick = { onEvent(UserLoginEvent.OnLoginButtonClicked) },
             modifier = Modifier
                 .fillMaxWidth()
                 .navigationBarsPadding()
                 .imePadding()
         ) {
-            Text(stringResource(Res.string.auth_register_button))
+            Text(stringResource(Res.string.auth_login_button))
         }
     }
 }
 
 @Composable
 @Preview
-private fun UserRegistrationScreenPreview() {
-    UserRegistrationScreen(
-        uiState = UserRegistrationUiState(),
+private fun UserLoginScreenPreview() {
+    UserLoginScreen(
+        uiState = UserLoginUiState(),
         onEvent = {}
     )
 }

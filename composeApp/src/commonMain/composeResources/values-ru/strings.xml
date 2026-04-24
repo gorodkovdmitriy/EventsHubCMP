@@ -1,7 +1,8 @@
 <resources>
-    <string name="user_registration_first_name">Имя</string>
-    <string name="user_registration_last_name">Фамилия</string>
-    <string name="user_registration_email">Электронная почта</string>
-    <string name="user_registration_password">Пароль</string>
-    <string name="user_registration_register_button">Зарегистрироваться</string>
+    <string name="auth_registration_first_name">Имя</string>
+    <string name="authregistration_last_name">Фамилия</string>
+    <string name="auth_email">Электронная почта</string>
+    <string name="auth_password">Пароль</string>
+    <string name="auth_register_button">Зарегистрироваться</string>
+    <string name="auth_login_button">Войти</string>
 </resources>

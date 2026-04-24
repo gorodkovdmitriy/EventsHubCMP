@@ -40,8 +40,7 @@ class UserRegistrationViewModel(
                 _state.value = _state.value.copy(password = event.password)
             }
             is UserRegistrationEvent.OnRegisterButtonClicked -> {
-                // registerUser()
-                router.openAuthScreen()
+                registerUser()
             }
         }
     }

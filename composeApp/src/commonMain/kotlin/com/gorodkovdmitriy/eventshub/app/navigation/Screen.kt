@@ -16,13 +16,5 @@ sealed interface Screen : NavKey {
     data object Auth : Screen
 
     @Serializable
-    data object UserInfo : Screen
+    data object AllUsers : Screen
 }
-//
-//val config = SavedStateConfiguration {
-//    serializersModule = SerializersModule {
-//        polymorphic(NavKey::class) {
-//            subclass(Screen.Auth::class, Screen.Auth.serializer())
-//        }
-//    }
-//}

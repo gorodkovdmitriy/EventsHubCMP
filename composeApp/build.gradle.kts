@@ -67,6 +67,7 @@ kotlin {
 
             // Навигация
             implementation(libs.navigation3)
+            implementation(libs.navigation3.lifecycle)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

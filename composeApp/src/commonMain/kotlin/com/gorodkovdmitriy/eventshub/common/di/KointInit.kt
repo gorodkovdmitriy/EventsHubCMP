@@ -1,6 +1,7 @@
 package com.gorodkovdmitriy.eventshub.common.di
 
 import com.gorodkovdmitriy.eventshub.feature.auth.di.authModule
+import com.gorodkovdmitriy.eventshub.feature.users.di.usersModule
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -13,6 +14,7 @@ fun initKoin(config: KoinAppDeclaration? = null): KoinApplication {
             platformModule,
             commonModule,
             authModule,
+            usersModule,
         )
     }
 }
