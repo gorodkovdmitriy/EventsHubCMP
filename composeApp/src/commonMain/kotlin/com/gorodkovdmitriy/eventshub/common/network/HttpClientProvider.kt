@@ -62,14 +62,11 @@ class HttpClientProvider(
                     loadTokens {
                         val access = tokenManager.getAccessToken()
                         val refresh = tokenManager.getRefreshToken()
-                        log(message = "loadTokens start access = $access")
                         if (access.isNullOrBlank() || refresh.isNullOrBlank()) return@loadTokens null
-
                         return@loadTokens BearerTokens(accessToken = access, refreshToken = refresh)
                     }
 
                     refreshTokens {
-                        log(message = "refreshToken start")
                         val refreshToken = tokenManager.getRefreshToken() ?: return@refreshTokens null
                         val response = client.post("auth/refresh") {
                             contentType(ContentType.Application.Json)
@@ -82,7 +79,6 @@ class HttpClientProvider(
                             val authResponseEntity: AuthResponseEntity = response.body()
                             tokenManager.saveFromAuthResponse(authResponseEntity)
 
-                            log(message = "refreshToken success")
                             BearerTokens(
                                 accessToken = authResponseEntity.accessToken,
                                 refreshToken = authResponseEntity.refreshToken,
